@@ -1,0 +1,177 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme inline {
+  --font-sans: "Manrope", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Chakra Petch", "Manrope", ui-sans-serif, sans-serif;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-pitch: var(--pitch);
+  --color-pitch-foreground: var(--pitch-foreground);
+  --color-lime: var(--lime);
+  --color-ciano: var(--ciano);
+  --color-vidro: var(--vidro);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-2xl: calc(var(--radius) + 8px);
+  --radius-3xl: calc(var(--radius) + 14px);
+}
+
+/*
+ * Conceito: "estádio à noite". Claro = gramado sob luz do dia, escuro = arena com refletores:
+ * fundo grafite esverdeado, superfícies de vidro, verde elétrico e um ciano de placar eletrônico.
+ */
+:root {
+  color-scheme: light;
+  --radius: 0.85rem;
+  --background: oklch(0.975 0.006 165);
+  --foreground: oklch(0.21 0.025 200);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.21 0.025 200);
+  --muted: oklch(0.945 0.01 170);
+  --muted-foreground: oklch(0.5 0.02 200);
+  --primary: oklch(0.6 0.16 158);
+  --primary-foreground: oklch(0.99 0 0);
+  --secondary: oklch(0.94 0.02 165);
+  --secondary-foreground: oklch(0.3 0.05 180);
+  --accent: oklch(0.94 0.035 160);
+  --accent-foreground: oklch(0.32 0.08 165);
+  --destructive: oklch(0.6 0.21 25);
+  --border: oklch(0.9 0.012 175);
+  --input: oklch(0.88 0.014 175);
+  --ring: oklch(0.6 0.16 158);
+  --pitch: oklch(0.42 0.1 162);
+  --pitch-foreground: oklch(0.99 0 0);
+  --lime: oklch(0.9 0.19 125);
+  --ciano: oklch(0.62 0.13 215);
+  --vidro: oklch(1 0 0 / 0.72);
+  --grade: oklch(0.21 0.025 200 / 0.045);
+  --brilho-1: oklch(0.8 0.14 160 / 0.22);
+  --brilho-2: oklch(0.8 0.1 215 / 0.14);
+  --placar-de: oklch(0.55 0.15 158);
+  --placar-ate: oklch(0.3 0.08 185);
+  --sombra: 0 1px 2px oklch(0.2 0.03 200 / 0.06), 0 8px 24px -12px oklch(0.2 0.03 200 / 0.18);
+}
+
+.dark {
+  color-scheme: dark;
+  --background: oklch(0.145 0.018 215);
+  --foreground: oklch(0.95 0.008 190);
+  --card: oklch(0.19 0.02 210);
+  --card-foreground: oklch(0.95 0.008 190);
+  --muted: oklch(0.235 0.02 210);
+  --muted-foreground: oklch(0.7 0.02 200);
+  --primary: oklch(0.8 0.19 152);
+  --primary-foreground: oklch(0.17 0.03 180);
+  --secondary: oklch(0.25 0.022 210);
+  --secondary-foreground: oklch(0.92 0.01 190);
+  --accent: oklch(0.27 0.035 185);
+  --accent-foreground: oklch(0.93 0.04 160);
+  --destructive: oklch(0.66 0.2 22);
+  --border: oklch(0.95 0.02 190 / 0.09);
+  --input: oklch(0.95 0.02 190 / 0.14);
+  --ring: oklch(0.8 0.19 152);
+  --pitch: oklch(0.3 0.07 170);
+  --pitch-foreground: oklch(0.98 0 0);
+  --lime: oklch(0.88 0.2 128);
+  --ciano: oklch(0.8 0.13 210);
+  --vidro: oklch(0.19 0.02 210 / 0.62);
+  --grade: oklch(0.95 0.02 190 / 0.035);
+  --brilho-1: oklch(0.72 0.19 152 / 0.16);
+  --brilho-2: oklch(0.7 0.13 215 / 0.12);
+  --placar-de: oklch(0.32 0.09 165);
+  --placar-ate: oklch(0.17 0.03 215);
+  --sombra: 0 1px 0 oklch(1 0 0 / 0.04) inset, 0 12px 32px -16px oklch(0 0 0 / 0.7);
+}
+
+/* Fora das camadas de propósito: vence qualquer CSS de base injetado pelo ambiente. */
+html,
+body {
+  background-color: var(--background);
+  color: var(--foreground);
+}
+
+@layer base {
+  * { @apply border-border; }
+  html { -webkit-tap-highlight-color: transparent; }
+  body {
+    @apply font-sans antialiased;
+    background-image:
+      radial-gradient(60rem 30rem at 15% -10%, var(--brilho-1), transparent 70%),
+      radial-gradient(50rem 28rem at 100% 0%, var(--brilho-2), transparent 70%),
+      linear-gradient(var(--grade) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grade) 1px, transparent 1px);
+    background-size: auto, auto, 32px 32px, 32px 32px;
+    background-attachment: fixed;
+    min-height: 100dvh;
+  }
+  ::selection { background: color-mix(in oklch, var(--primary) 35%, transparent); }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+  }
+  h1, h2, h3 { @apply font-display tracking-tight; }
+  button:not(:disabled), [role="button"] { cursor: pointer; }
+  :focus-visible { @apply outline-2 outline-offset-2 outline-ring; }
+}
+
+@utility pitch-pattern {
+  background-image:
+    radial-gradient(circle at 50% 50%, transparent 0 18%, oklch(1 0 0 / 0.08) 18% calc(18% + 1.5px), transparent calc(18% + 1.5px)),
+    linear-gradient(90deg, transparent calc(50% - 0.75px), oklch(1 0 0 / 0.08) calc(50% - 0.75px) calc(50% + 0.75px), transparent calc(50% + 0.75px)),
+    repeating-linear-gradient(90deg, oklch(1 0 0 / 0.03) 0 10%, transparent 10% 20%);
+}
+
+/* Placar / hero: gramado de estádio iluminado, nos dois temas. */
+@utility placar {
+  background:
+    radial-gradient(120% 80% at 50% -20%, oklch(1 0 0 / 0.16), transparent 60%),
+    linear-gradient(160deg, var(--placar-de), var(--placar-ate));
+  box-shadow: 0 0 0 1px oklch(1 0 0 / 0.08) inset, 0 24px 60px -24px color-mix(in oklch, var(--placar-de) 70%, transparent);
+}
+
+/* Superfície de vidro para navegação e barras. */
+@utility vidro {
+  background-color: var(--vidro);
+  backdrop-filter: blur(18px) saturate(1.4);
+  -webkit-backdrop-filter: blur(18px) saturate(1.4);
+}
+
+@utility sombra {
+  box-shadow: var(--sombra);
+}
+
+/* Número de placar: dígitos de largura fixa, como num placar eletrônico. */
+@utility led {
+  font-family: var(--font-display);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.02em;
+}
+
+@utility safe-bottom {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+
+@utility tabular {
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes fade-in { from { opacity: 0 } }
+@keyframes pop-in { from { opacity: 0; scale: 0.96 } }
+@keyframes sheet-up { from { transform: translateY(100%) } }
