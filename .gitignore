@@ -1,4 +1,9 @@
-node_modules
-dist
+/target/
+dependency-reduced-pom.xml
+
+# Front-end: dependências e build gerado (o Dockerfile gera o build)
+node_modules/
+/src/main/resources/static/
+frontend/dist/
 *.local
 *.tsbuildinfo
