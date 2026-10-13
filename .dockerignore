@@ -1,0 +1,6 @@
+target
+.git
+.vscode
+*.class
+*.log
+frontend/node_modules
