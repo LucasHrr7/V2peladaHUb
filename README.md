@@ -6,7 +6,9 @@
 
 **Organize a pelada sem planilha e sem discussão.**<br />
 Presença, sorteio equilibrado, placar ao vivo, fila de times e artilharia, tudo no celular, à beira do campo.
-
+<p>
+  <a href="https://v2pelada-h-ub-frontend.vercel.app/"><strong>🔗 Acesse o app ao vivo</strong></a>
+</p>
 <p>
   <img alt="React 19" src="https://img.shields.io/badge/React-19-149ECA?logo=react&logoColor=white" />
   <img alt="TypeScript" src="https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white" />
